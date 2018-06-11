@@ -3,7 +3,7 @@ Simulates 2 of the 3 Types of ELB HC
 1 - TCP HC - HC sends a SYN and must complete 3 WAY handshake to OK check, anything else == fail
 2 - HTTP HC - HC sends HTTP GET method to configured path and must receive configured HTTP STATUS to OK HC
 
-Libraries used include: i) socket ii) time iii) http.client 
+Modules used include: i) socket ii) time iii) http.client 
 
 A] Running this in IDE ensure you have the right modules. 
 
