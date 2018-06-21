@@ -24,24 +24,24 @@ def HTTP_HC ():
             conn.request("GET", path)
             r1 = conn.getresponse()
             if (r1.status == status_code) and (hc % hc_threshold != 0):
-                print ('Health Check', hc, 'to', server_name, 'has passed')
+                print ("Health Check {} to {} has passed.".format(hc,server_name))
                 hc = hc + 1
                 time.sleep(timeout_hc)
             elif (r1.status == status_code) and (hc % hc_threshold == 0):
-                print('Health Check', hc, 'to', server_name, 'has passed and', server_name, 'has been marked as healthy')
+                print("Health Check {} to {} has passed and {} has been marked as healthy.".format(hc, server_name, server_name))
                 hc = 1
                 time.sleep(timeout_hc)
             #hc = 0
             elif (r1.status != status_code) and (hc % hc_unhealthy_threshold != 0):
-                print('Health Check', hc, 'to', server_name, 'has failed with status code', r1.status )
+                print("Health Check {} to {} has failed with status code {}.".format (hc, server_name, r1.status))
                 hc = hc + 1
                 time.sleep(timeout_hc)
             elif (r1.status != status_code) and (hc % hc_unhealthy_threshold == 0):
-                print('Health Check', hc, 'to', server_name, 'has failed and', server_name, 'has been marked as unhealthy' )
+                print("Health Check {} to {} has failed and {} has been marked as unhealthy.".format(hc,server_name,server_name))
                 hc = 1
                 time.sleep(timeout_hc)
             else:
-                print ('Health Check', hc, 'to', server_name, 'has failed')
+                print ("Health Check {} to {} has failed.".format(hc, server_name))
                 time.sleep(timeout_hc)
                 hc = hc + 1
         except Exception as e:
